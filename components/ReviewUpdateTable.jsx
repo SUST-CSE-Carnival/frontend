@@ -44,9 +44,6 @@ export default function ReviewUpdateTable({ toast }) {
     const data = {
         subjectId : review.subjectId,
         orderId : review.orderId,
-        subjectName : review.subjectName,
-        role : review.role,
-        
     }
     fetch(`${endpoint}/add/review?star=${parseInt(star)}&review=${reviewContent}`, {
       method: 'POST',
@@ -71,37 +68,20 @@ export default function ReviewUpdateTable({ toast }) {
     setReviewContent("")
   }
 
-  function formatRole(role) {
-    if(role == 'hospital') {
-        return "Diagnosis"
-        }
-      if(role == 'doctor') {
-          return "Doctor"
-        }
-      if(role == 'ambulance') {
-          return "Ambulance Trip"
-        }
-      if(role == 'pharmacy') {
-        return "Pharmacy"
-    }
-  }
-
   if(data && data.type != 'empty') {
     return (
         <Table>
         <TableCaption>Please Give Your Important Feedback</TableCaption>
         <TableHeader>
             <TableRow>
-            <TableHead className="w-[200px] text-center">Name</TableHead>
-            <TableHead className="w-[200px] text-center">Type</TableHead>
+            <TableHead className="w-[200px] text-center">Pharmacy Name</TableHead>
             <TableHead className="w-[100px]"></TableHead>
             </TableRow>
         </TableHeader>
         <TableBody>
             {data?.map((review) =>{ return (
             <TableRow key={review.id}>
-                <TableCell className="w-[200px] text-center">{review?.subjectName}</TableCell>
-                <TableCell className="w-[200px] text-center">{formatRole(review?.role.toLowerCase())}</TableCell>
+                <TableCell className="w-[200px] text-center">{review?.pharmacy_name}</TableCell>
                 <TableCell className="w-[100px] text-center">
                   <Dialog>
                       <DialogTrigger>

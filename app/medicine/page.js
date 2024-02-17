@@ -9,7 +9,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTrigger } from '@/components
 import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
 import Maps from "@/components/GoogleMaps/Maps";
-import PageLoading from '@/components/PageLoading';
 
 export default function page() {
   const [medicineInput, setMedicineInput] = useState("")
@@ -18,6 +17,7 @@ export default function page() {
   const [checkedCompanies, setCheckedCompanies] = useState([]);
   const [place, setPlace] = useState(null)
   const [loading, setLoading] = useState(false)
+
   const router = useRouter()
   useEffect(() => {
     let tp = 0
@@ -57,6 +57,10 @@ export default function page() {
 
   }
 
+  function handleSendToUploadPrescription() {
+    router.push('/upload_prescription?place=' + JSON.stringify(place))
+  }
+
   if(place) {
     return (
       <main className="min-h-screen overflow-auto bg-white">
@@ -66,6 +70,9 @@ export default function page() {
         <div className="flex items-center my-4">
           <input type="text" value={medicineInput} onChange={e => setMedicineInput(e.target.value)} placeholder="Enter Your Required Medicine Here" 
           className="h-[4rem] z-10 overflow-wrap px-4 bg-white w-[60%] focus:outline-none text-xl mx-auto placeholder:text-gray-400 border border-gray-500 rounded-full" />
+        </div>
+        <div className='my-4 flex justify-center'>
+          <h1 className='text-2xl'>Or, Upload Your Prescription <span onClick={handleSendToUploadPrescription} className='text-red-700 cursor-pointer underline underline-offset-1'>Here</span></h1>
         </div>
         {cartItems.length > 0 && 
           <div className="flex w-[32rem] mx-auto items-center justify-center">

@@ -26,7 +26,8 @@ export default function RootLayout({ params, children }) {
       const response = await fetch(`${endpoint}/profile`, {
         method: 'GET',
         headers : {'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token.accessToken
+        'Authorization': 'Bearer ' + token.accessToken,
+        "ngrok-skip-browser-warning": "69420"
       }
     })
       const ans = await response.json()        
@@ -46,10 +47,10 @@ export default function RootLayout({ params, children }) {
         <div className='w-[22rem] h-screen overflow-auto text-white flex items-center flex-col border-r mx-auto border-r-gray-300'>
          <div className="avatar mt-16">
             <div className="w-32 rounded-full">
-                <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                <img src={"/832.jpg"} />
             </div>
          </div>
-          <h1 className='text-xl text-black my-4'>Hi, </h1>
+          <h1 className='text-xl text-black my-4'>Hi, {profile?.name} </h1>
 
           <div className={`p-16 my-1 text-xl ${pathname === `/dashboard/${params.id}/orders` ? "text-black" : "text-gray-500 "} flex py-2 cursor-pointer justify-between w-full items-center`}>
               <MdBorderColor  className='text-2xl mr-4' />
@@ -61,7 +62,7 @@ export default function RootLayout({ params, children }) {
               <Link className='h-full w-full' href={`/dashboard/${params.id}/inbox`}>Inbox</Link>
           </div>
 
-          <div className={`p-16 my-1 text-xl  ${pathname === `/dashboard/${params.id}/inbox` ? "text-black" : "text-gray-500 "} flex py-2 cursor-pointer justify-between w-full items-center`}>
+          <div className={`p-16 my-1 text-xl  ${pathname === `/dashboard/${params.id}/review` ? "text-black" : "text-gray-500 "} flex py-2 cursor-pointer justify-between w-full items-center`}>
               <MdOutlineRateReview  className='text-2xl mr-4' />
               <Link className='h-full w-full' href={`/dashboard/${params.id}/review`}>Give Review</Link>
           </div>

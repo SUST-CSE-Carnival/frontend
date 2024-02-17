@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from '@/components/ui/dialog'
 import { Button } from './ui/button'
 import ReminderDetails from './ReminderDetails'
+import NavBar from '@/components/NavBar'
 
 export default function MedicationInput() {
   const [description, setDescription] = useState("")
@@ -26,7 +27,8 @@ export default function MedicationInput() {
     const data = {
         description,
         time : reminderTime,
-        days : selectedDays.join(',')
+        days : selectedDays.join(','),
+        api_key : "eBov1bYMdvTLHo54gzQ_f1:APA91bGQAB5Wjw7aTVjvNJFlIBJb71TpCTgPm1DBFmt8Oz2Ufj3f6UAtNHDhVukRKAv2ds80lGXo9hl4V9o6cXvX39PM0oWk9s2_3KtIVZbCZBe-0XCkR7P_JXK4ymql9CZQXEl0ZoKY"
     }
     console.log(data)
     setDescription("")
@@ -34,7 +36,7 @@ export default function MedicationInput() {
     setSelectedDays([])
 
     const endpoint = process.env.NEXT_PUBLIC_ENDPOINT
-    fetch(`${endpoint}/add/medicine/reminder`, {
+    fetch(`${endpoint}/reminder/add`, {
         method: 'POST',
         headers : {'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token.accessToken },
@@ -52,10 +54,11 @@ export default function MedicationInput() {
         let token = localStorage.getItem("token")
         token = JSON.parse(token)
         const endpoint = process.env.NEXT_PUBLIC_ENDPOINT
-        fetch(`${endpoint}/medicine/reminder/all`, {
+        fetch(`${endpoint}/reminder/get`, {
         method: 'GET',
         headers : {'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token.accessToken }
+        'Authorization': 'Bearer ' + token.accessToken,
+        "ngrok-skip-browser-warning": "69420" }
         })
         .then((res) => res.json())
         .then((data) => {
@@ -66,12 +69,16 @@ export default function MedicationInput() {
 
   return (
     <>
-    <div className='flex justify-center px-4 py-3'>
+    <nav>
+        <NavBar />
+    </nav>
+    <div className='flex justify-center px-8 py-6'>
+        
         <Dialog>
             <DialogTrigger>
                 <h1 className="bg-[#3aa2d3] px-4 py-3 text-2xl text-white rounded-xl">Add A New Medication Schedule</h1>
             </DialogTrigger>
-            <DialogContent className="p-12 max-w-2xl">
+            <DialogContent className="p-12 max-w-2xl bg-white">
                 <DialogHeader className={`flex items-center w-full mx-auto font-bold text-xl text-center`}>Medication Schedule :</DialogHeader>
                    <div>
                     <label className='font-semibold' htmlFor='description'>Medication Description :</label>
@@ -112,12 +119,12 @@ export default function MedicationInput() {
                         <span>Saturday</span>
                     </label>
                     </div>
-                   <Button onClick={handleSubmit} className="flex justify-center rounded-lg mt-16 mx-auto">Save</Button>
+                   <Button onClick={handleSubmit} className="flex bg-[#205e72] hover:bg-[#205e72] justify-center rounded-lg mt-16 mx-auto">Save</Button>
                 </div>
             </DialogContent>
         </Dialog>
     </div>
-    <div className='grid grid-cols-1 lg:grid-cols-4 gap-6'>
+    <div className='grid grid-cols-1 lg:grid-cols-5 p-8'>
         {
             allReminders?.type != 'empty' && allReminders?.map(reminder => <ReminderDetails reminder={reminder}/>)
         }

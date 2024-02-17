@@ -7,13 +7,15 @@ import Link from 'next/link'
 import landing from '@/components/Lottiefiles/pharmacy.json'
 import MapComponent from '@/components/GoogleMaps/MapComponent'
 import SupportChat from '@/components/AIChatBot/SupportChat'
-import { useEffect } from 'react'
-import { addMemberToChat } from '@/components/utils'
+import { useEffect, useState } from 'react'
+
 
 export default function Home() {
 
+  const [client, setClient] = useState(false)  
+
   useEffect(() => {
-    addMemberToChat("pharmacy2@gmail.com", "1234", "231681", "fahim3@gmail.com")
+    setClient(true)
   }, [])
 
   return (
@@ -38,7 +40,7 @@ export default function Home() {
 
           </div>
         </section>
-        
+        { client && <SupportChat /> }
     </main>
   )
 }
