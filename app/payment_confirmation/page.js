@@ -6,9 +6,10 @@ import Payment from "../../components/Lottiefiles/payment.json";
 export default function PaymentConfirmation() {
 
     useEffect(() => {
-        // i want to push user to his dashboard when back button is pressed
+        let token = localStorage.getItem("token")
+        token = JSON.parse(token)
         window.onpopstate = () => {
-            window.location.href = "/signin"
+            window.location.href = `/dashboard/${token.id}/orders`
         }
     })
   return (

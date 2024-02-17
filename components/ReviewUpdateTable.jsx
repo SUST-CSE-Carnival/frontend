@@ -45,7 +45,7 @@ export default function ReviewUpdateTable({ toast }) {
         subjectId : review.subjectId,
         orderId : review.orderId,
     }
-    fetch(`${endpoint}/add/review?star=${parseInt(star)}&review=${reviewContent}`, {
+    fetch(`${endpoint}/review/add?star=${parseInt(star)}&review=${reviewContent}`, {
       method: 'POST',
       headers : {'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token.accessToken,
@@ -85,7 +85,7 @@ export default function ReviewUpdateTable({ toast }) {
                 <TableCell className="w-[100px] text-center">
                   <Dialog>
                       <DialogTrigger>
-                        <Button className="bg-[#2a818d]">Give A Review</Button>
+                        <Button className="bg-[#2a818d] hover:bg-[#2a818d]">Give A Review</Button>
                       </DialogTrigger>
                       <DialogContent className="p-12 max-w-2xl">
                           <DialogHeader className={`flex items-center w-full mx-auto font-bold text-xl text-center`}>Your Review For : {review.subjectName}</DialogHeader>
