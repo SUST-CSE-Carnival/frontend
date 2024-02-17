@@ -1,10 +1,9 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { IoSend } from "react-icons/io5";
-import { MdAddCircle } from "react-icons/md";
-import PageLoading from "./PageLoading";
 import { Button } from "./ui/button";
 import { useRouter, useSearchParams } from 'next/navigation'
+import MedicineOrderPageLoading from "./MedicineOrderPageLoading";
 
 export default function ImageToText(){
  const [image, setImage] = useState(null);
@@ -99,7 +98,7 @@ export default function ImageToText(){
             });
             const medicineResponse = await response.json()
             setMedicinesResponse(medicineResponse)
-            console.log(medicineResponse)
+            console.log(medicinesResponse)
         }
         
      } else {
@@ -143,23 +142,12 @@ export default function ImageToText(){
    };
  };
 
-
- const handleAdd = () => {
-   setImgStream("");
-   setImage(null);
-   setShowMessage(false);
-   if (medicineName !== "" && quantity !== "") {
-     setMedicines((prev) => [...prev, medicineName]);
-     setQuantityArray((prev) => [...prev, quantity]);
-   }
-   console.log(medicines);
-   console.log("Add button clicked");
- };
-
  async function handleMedicinePayment() {
     setLoading(true)
+    console.log("medicine response : " + medicinesResponse?.medicines)
     let description = ""
-    for (let item in medicinesResponse?.medicines) {
+    for (let item of medicinesResponse?.medicines) {
+        console.log(item)
       description += `${item.name} - ${item.quantity} pieces, \n`
     }
     const medicineData = {
@@ -167,6 +155,7 @@ export default function ImageToText(){
       price : (parseInt(medicinesResponse.price) + 5).toString(),
       place : place
     }
+    console.log("description : " + description)
 
     let token = localStorage.getItem("token")
     token = JSON.parse(token)
@@ -181,8 +170,8 @@ export default function ImageToText(){
     const ans = await response.json()
     setLoading(false)
     if(ans.detail == "Success") {
-      router.push("/payment_confirmation")
-    }
+      router.push("/payment_confirmation")   
+     }
 
   }
 
@@ -211,7 +200,7 @@ export default function ImageToText(){
             <Image
             src={imgStream}
             alt="profile picture"
-            width={500}
+            width={600}
             height={600}
             className="bg-slate-200 mt-1 mb-3 border-2 border-solid border-white object-cover rounded"
             />
@@ -258,8 +247,8 @@ export default function ImageToText(){
         </div>
         </div>
     </form>
-    <div>
-        { loading && <PageLoading /> }
+    <div className="mt-[-32]">
+        { loading && <MedicineOrderPageLoading /> }
     </div>
     <div className="h-[50rem] w-full">
         { medicinesResponse && medicinesResponse?.medicines?.length > 0 && 

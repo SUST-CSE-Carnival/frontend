@@ -11,6 +11,7 @@ import { MdBorderColor } from "react-icons/md";
 import { MdOutlineChatBubble } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
 import { MdOutlineRateReview } from "react-icons/md";
+import SupportChat from '@/components/AIChatBot/SupportChat'
 
 
 export default function RootLayout({ params, children }) {
@@ -83,6 +84,7 @@ export default function RootLayout({ params, children }) {
         </div>
 
       </div>
+      <SupportChat />
     </main>
   )
 }

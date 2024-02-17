@@ -32,6 +32,7 @@ export default function PendingMedicineOrders() {
         }
       })
   }, [])
+  
 
   useEffect(() => {
     if ('geolocation' in navigator) {
@@ -45,7 +46,7 @@ export default function PendingMedicineOrders() {
   }, []);
 
 
-  if(data?.type !== 'empty' && data.length > 0) {
+  if(data?.length > 0) {
     return (
       <Table>
       <TableCaption>Currently Pending Medicine Orders</TableCaption>
@@ -68,7 +69,7 @@ export default function PendingMedicineOrders() {
       </Table>
     )
     }
-    else if(data.type == 'empty') {
+    else if(data?.length == 0) {
     return (
         <div className="flex items-center justify-center h-screen w-full">
             <h1 className="text-2xl">No Pending Medicine Orders Right Now</h1>

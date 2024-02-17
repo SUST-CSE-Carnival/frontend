@@ -87,7 +87,7 @@ export default function ReviewUpdateTable({ toast }) {
                       <DialogTrigger>
                         <Button className="bg-[#2a818d] hover:bg-[#2a818d]">Give A Review</Button>
                       </DialogTrigger>
-                      <DialogContent className="p-12 max-w-2xl">
+                      <DialogContent className="p-12 max-w-2xl bg-white">
                           <DialogHeader className={`flex items-center w-full mx-auto font-bold text-xl text-center`}>Your Review For : {review.subjectName}</DialogHeader>
                           <div className="my-2">
                             <h1 className="my-1">Your Rating : (Out of Five)</h1>
@@ -96,7 +96,7 @@ export default function ReviewUpdateTable({ toast }) {
                           <div className="">
                             <textarea type="text" className="w-full my-1 px-4 py-2 focus:outline-none border border-gray-400 rounded-md" placeholder="Write A Review" value={reviewContent} onChange={(e) => setReviewContent(e.target.value)}/>
                           </div>
-                          <Button onClick={() => updateReviewHandler(review)} className={`bg-[#2589b1] round-lg text-lg h-12 w-64 flex mx-auto items-center`}>{isLoading ? <span className="loading loading-spinner"></span> : "Send"}</Button>
+                          <Button onClick={() => updateReviewHandler(review)} className={`bg-[#2589b1] hover:bg-[#2589b1] round-lg text-lg h-12 w-64 flex mx-auto items-center`}>{isLoading ? <span className="loading loading-spinner"></span> : "Send"}</Button>
                       </DialogContent>
                   </Dialog>
                 </TableCell>

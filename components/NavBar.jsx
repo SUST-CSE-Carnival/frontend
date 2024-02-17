@@ -1,12 +1,11 @@
 "use client"
-import { Caveat, Kameron, Nunito } from 'next/font/google'
+import { Kameron } from 'next/font/google'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Button } from './ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu'
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
+import { AiOutlineMenu } from 'react-icons/ai'
 import { usePathname, useRouter } from 'next/navigation'
-import { BsFillBellFill } from 'react-icons/bs'
 import { CiGlobe } from "react-icons/ci";
 
 
@@ -17,7 +16,6 @@ export default function Hero({ landing = true }) {
   const pathname = usePathname()
   const [signedIn, setSignedIn] = useState(false)
   const [token, setToken] = useState(false)
-  const [nav, setNav] = useState(false)
   const router = useRouter()
   console.log(pathname)
   useEffect(() => {
@@ -29,24 +27,22 @@ export default function Hero({ landing = true }) {
     console.log(token?.id)
     setToken(token)
   }, [])
-  const handleNav = () => {
-      setNav(!nav)
-  }
+
   function signOutHandler() {
-    // localStorage.removeItem('token');
+    localStorage.removeItem('token');
     router.push('/')
     setSignedIn(false)
   }
 
   function TokenCheckHandler(url) {
     let token = localStorage.getItem("token")
-    // token = JSON.parse(token)
-    // if(!token) {
-    //   router.push("/signin")
-    // }
-    // else {
-    //   router.push(url)
-    // }
+    token = JSON.parse(token)
+    if(!token) {
+      router.push("/signin")
+    }
+    else {
+      router.push(url)
+    }
     router.push(url)
   }
   return (
@@ -54,15 +50,12 @@ export default function Hero({ landing = true }) {
       <div className='flex justify-between items-center px-8 py-4 text-white w-[80%] mx-auto'>  
       <div className='space-x-4 flex items-baseline font-bold'>
         <Link href={'/'} className={`${kameron.className} text-6xl text-red-800 font-black mx-4`} ><h1>PharmaCare</h1></Link>
-        <p onClick={() => TokenCheckHandler("/medicine")} className={`${pathname == '/plan' && "border-b-2 border-red-700"} text-black hover:border-b-4 hover:border-red-700 py-2 px-2 cursor-pointer`}>
+        <p onClick={() => TokenCheckHandler("/medicine")} className={`${pathname == '/medicine' && "border-b-2 border-red-700"} text-black hover:border-b-4 hover:border-red-700 py-2 px-2 cursor-pointer`}>
           Order Medicine
         </p>
-        <p onClick={() => TokenCheckHandler("/medication")} className={`${pathname == '/hotels' && "border-b-2 border-red-700"} hover:border-b-4 hover:border-red-700 text-black py-2 px-2 cursor-pointer`}>
+        <p onClick={() => TokenCheckHandler("/medication")} className={`${pathname == '/medication' && "border-b-2 border-red-700"} hover:border-b-4 hover:border-red-700 text-black py-2 px-2 cursor-pointer`}>
           Medication Reminders
         </p>
-        {/* <p onClick={() => TokenCheckHandler("/")} className={`${pathname == '/flights' && "border-b-2 border-red-700"} hover:border-b-4 hover:border-red-700 text-black py-2 px-2 cursor-pointer`}>
-          Ambulance Booking
-        </p> */}
       </div>
       <div className='flex cursor-pointer items-center space-x-8'>
           <div className='flex space-x-8 items-center'>

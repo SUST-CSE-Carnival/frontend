@@ -1,5 +1,5 @@
 "use client"
-import Stat from '@/components/CustomDaisyUIComponents/Stat'
+import Stat from '@/components/Stat'
 import BarChartNoPadding from '@/components/charts/BarChartNoPadding'
 import React, { useEffect, useState } from 'react'
 

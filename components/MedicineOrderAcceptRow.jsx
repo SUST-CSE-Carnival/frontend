@@ -50,7 +50,7 @@ export default function MedicineOrderAcceptRow({ order, userLocation }) {
             <DialogTrigger>
                 <Button className="bg-[#145a3f] hover:bg-[#145a3f] hover:text-white">See Exact Location</Button>
             </DialogTrigger>
-                <DialogContent className="p-4 max-w-[1225px]">
+                <DialogContent className="p-4 max-w-[1225px] bg-white">
                 <DialogHeader className={`flex items-center w-full mx-auto font-bold text-xl text-center`}>Customer Location</DialogHeader>
                 <CustomerMap userLocation={userLocation} center={{lat : order.place.lat, lng : order.place.lng}}/>
                 </DialogContent>

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { TableCell, TableRow, Table, TableCaption, TableHead, TableHeader, TableBody } from './ui/table'
 import MedicineOrderCompleteRow from './MedicineOrderCompleteRow'
 import PageLoading from './PageLoading'
+import MedicineOrderCompleteRowForUser from './MedicineOrderCompleteRowForUser'
 
 
 export default function PendingMedicineOrdersForUsers() {
@@ -59,7 +60,7 @@ export default function PendingMedicineOrdersForUsers() {
       </TableHeader>
       <TableBody>
           {data?.map((order) =>{ return (
-            <MedicineOrderCompleteRow key={order.id} order={order} userLocation={userLocation}/>
+            <MedicineOrderCompleteRowForUser key={order.id} order={order} userLocation={userLocation}/>
           )})}
       </TableBody>
       </Table>

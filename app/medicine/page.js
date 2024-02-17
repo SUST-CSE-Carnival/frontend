@@ -51,9 +51,9 @@ export default function page() {
     })
     const ans = await response.json()
     setLoading(false)
-    // if(ans.detail == "Success") {
-    //   router.push("/payment_confirmation")
-    // }
+    if(ans.detail == "Success") {
+      router.push("/payment_confirmation")
+    }
 
   }
 
