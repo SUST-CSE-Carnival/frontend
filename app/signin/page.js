@@ -41,7 +41,12 @@ export default function page() {
             return
         }
         localStorage.setItem('token', JSON.stringify(ans))
-        console.log(ans)
+        if(ans.role == 'PHARMACY') {
+            router.push(`/pharmacy_dashboard/${ans.id}`)
+        }
+        else {
+            router.push(`/`)
+        }
     }
 
 

@@ -47,7 +47,7 @@ export default function SupportChatContainer({ setChatOpened }) {
       }
     }
   return (
-    <main className="flex flex-col w-[24rem] rounded-lg h-[30rem] bg-white bottom-8 right-8 border border-gray-200">
+    <main className="flex flex-col w-[32rem] rounded-lg h-[40rem] bg-white bottom-8 right-8 border border-gray-200">
        <nav className="bg-[#3fb8f0] py-3 text-white items-center rounded-t-lg">
             <div className="justify-between px-4 flex">
                 <h3>Your AI assistant</h3>

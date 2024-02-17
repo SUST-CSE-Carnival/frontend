@@ -1,8 +1,8 @@
 import NavBar from '@/components/NavBar'
 import './globals.css'
-import { Inter, Playfair_Display, Titillium_Web, Quicksand } from 'next/font/google'
+import { Inter, Playfair_Display, Titillium_Web, Quicksand, Nunito } from 'next/font/google'
 
-const quicksand = Quicksand({ subsets: ['latin'], weight: '400' })
+const quicksand = Nunito({ subsets: ['latin'], weight: '400' })
 
 export const metadata = {
   title: 'Create Next App',

@@ -15,7 +15,7 @@ const kameron = Kameron({ subsets: ['latin'], weight: '700' })
 
 export default function Hero({ landing = true }) {
   const pathname = usePathname()
-  const [signedIn, setSignedIn] = useState(true)
+  const [signedIn, setSignedIn] = useState(false)
   const [token, setToken] = useState(false)
   const [nav, setNav] = useState(false)
   const router = useRouter()
@@ -26,13 +26,14 @@ export default function Hero({ landing = true }) {
       setSignedIn(true)
     }
     token = JSON.parse(token)
+    console.log(token?.id)
     setToken(token)
   }, [])
   const handleNav = () => {
       setNav(!nav)
   }
   function signOutHandler() {
-    localStorage.removeItem('token');
+    // localStorage.removeItem('token');
     router.push('/')
     setSignedIn(false)
   }
@@ -52,16 +53,16 @@ export default function Hero({ landing = true }) {
     <>
       <div className='flex justify-between items-center px-8 py-4 text-white w-[80%] mx-auto'>  
       <div className='space-x-4 flex items-baseline font-bold'>
-        <Link href={'/'} className={`${kameron.className} text-6xl text-red-800 font-black mx-4`} ><h1>Project Name</h1></Link>
-        <p onClick={() => TokenCheckHandler("/")} className={`${pathname == '/plan' && "border-b-2 border-red-700"} text-black hover:border-b-4 hover:border-red-700 py-2 px-2 cursor-pointer`}>
-          Plan A Trip
+        <Link href={'/'} className={`${kameron.className} text-6xl text-red-800 font-black mx-4`} ><h1>PharmaCare</h1></Link>
+        <p onClick={() => TokenCheckHandler("/medicine")} className={`${pathname == '/plan' && "border-b-2 border-red-700"} text-black hover:border-b-4 hover:border-red-700 py-2 px-2 cursor-pointer`}>
+          Order Medicine
         </p>
-        <p onClick={() => TokenCheckHandler("/")} className={`${pathname == '/hotels' && "border-b-2 border-red-700"} hover:border-b-4 hover:border-red-700 text-black py-2 px-2 cursor-pointer`}>
-          Book Hotels
+        <p onClick={() => TokenCheckHandler("/medication")} className={`${pathname == '/hotels' && "border-b-2 border-red-700"} hover:border-b-4 hover:border-red-700 text-black py-2 px-2 cursor-pointer`}>
+          Medication Reminders
         </p>
-        <p onClick={() => TokenCheckHandler("/")} className={`${pathname == '/flights' && "border-b-2 border-red-700"} hover:border-b-4 hover:border-red-700 text-black py-2 px-2 cursor-pointer`}>
-          Flight Booking
-        </p>
+        {/* <p onClick={() => TokenCheckHandler("/")} className={`${pathname == '/flights' && "border-b-2 border-red-700"} hover:border-b-4 hover:border-red-700 text-black py-2 px-2 cursor-pointer`}>
+          Ambulance Booking
+        </p> */}
       </div>
       <div className='flex cursor-pointer items-center space-x-8'>
           <div className='flex space-x-8 items-center'>
@@ -78,7 +79,7 @@ export default function Hero({ landing = true }) {
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className='bg-white mr-8 z-50'>
-                  <DropdownMenuItem className='p-2 my-4 cursor-pointer text-black'><Link href={`/dashboard`}>DashBoard</Link></DropdownMenuItem>
+                  <DropdownMenuItem className='p-2 my-4 cursor-pointer text-black'><Link href={`/dashboard/${token.id}/orders`}>DashBoard</Link></DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem className='p-2 my-4 cursor-pointer text-black hover:border-gray-200'><Button onClick={signOutHandler} variant="outline" className="h-8 font-normal -ml-2 text-md outline-none border-none hover:bg-white">Sign Out</Button></DropdownMenuItem>
                 </DropdownMenuContent>
@@ -87,7 +88,7 @@ export default function Hero({ landing = true }) {
           </>
           }
           {landing && !signedIn && 
-              <Link href={"/signup"}><Button className="rounded-md px-4 py-2 text-white hover:bg-red-700 bg-red-700 font-bold text-lg">Sign Up</Button></Link>
+              <Link href={"/signup"}><Button className="rounded-md px-4 py-2 text-white hover:bg-red-800 bg-red-800 font-bold text-lg">Sign Up</Button></Link>
             }
           </div>
       </div>

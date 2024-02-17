@@ -1,7 +1,7 @@
 "use client"
 import { Quicksand } from 'next/font/google'
 import { useState } from "react"
-// import { downloadImage, handleAddUserToChatEngine } from "@/components/utils"
+import { handleAddUserToChatEngine } from "@/components/utils"
 const quicksand = Quicksand({ subsets: ['latin'] })
 import { useRouter } from "next/navigation"
 import { useToast } from "@/components/ui/use-toast"
@@ -54,8 +54,8 @@ export default function page() {
       return
     }
     
-    // handleAddUserToChatEngine(emailInput, "1234", firstName, lastName)
-    router.push("/login")
+    handleAddUserToChatEngine(emailInput, "1234", firstName, lastName)
+    router.push("/signin")
   }
   return (
     <main className="h-screen w-full flex justify-center items-center bg-white overflow-auto">

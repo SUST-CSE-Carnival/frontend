@@ -12,7 +12,7 @@ const center3 = { lat :  23.7270468, lng : 90.3032032 }
 
 export default function MapComponent({ setPlace }) { 
     const { isLoaded } = useLoadScript({
-        googleMapsApiKey : 'AIzaSyDTvGsD7GScm_viq2ug7ndggHPLpqGajS0',
+        googleMapsApiKey : 'AIzaSyAmc3x1kHjDy8UvtI7_80Vr0bphAxm8Bl4',
         libraries: ['places'],
       })
       

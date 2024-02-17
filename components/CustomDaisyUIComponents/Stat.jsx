@@ -3,41 +3,24 @@ import { FaRegHeart } from "react-icons/fa6";
 
 export default function Stat() {
   return (
-    <div className='w-full flex flex-col items-center'>
-      <div className="stats shadow">
-  
-        <div className="stat">
-            <div className="stat-figure text-white">
-                <FaRegHeart className='text-2xl'/>
-            </div>
-            <div className="stat-title text-white">Total Likes</div>
-            <div className="stat-value text-white">25.6K</div>
-            <div className="stat-desc text-white">21% more than last month</div>
+    <div className='w-full flex justify-center space-x-6 px-64 items-center mx-auto bg-white '>
+        <div className="stat bg-[#336e85] rounded-lg py-4 space-y-2 w-[48rem]">
+            <div className=" text-white">Customers : (Last 7 Days) : 50</div>
+            <div className="text-white">Customers : (Last 30 Days) : 600</div>
+            <div className="text-secondary text-white">Customers : (All Time) : 3000</div>
         </div>
   
-        <div className="stat">
-            <div className="stat-figure text-secondary">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-            </div>
-            <div className="stat-title text-white">Page Views</div>
-            <div className="stat-value text-white">2.6M</div>
-            <div className="stat-desc text-white">21% more than last month</div>
+        <div className="stat bg-[#336e85] rounded-lg space-y-2 w-[48rem]">
+            <div className=" text-white">Income : (Last 7 Days) : 3000</div>
+            <div className="text-white">Income : (Last 30 Days) : 8000</div>
+            <div className="text-secondary text-white">Income : (All Time) : 150000</div>
         </div>
   
-        <div className="stat">
-            <div className="stat-figure text-secondary">
-            <div className="avatar online">
-                <div className="w-16 rounded-full">
-                <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                </div>
-            </div>
-            </div>
-            <div className="stat-value text-white">86%</div>
-            <div className="stat-title text-white">Tasks done</div>
-            <div className="stat-desc text-secondary text-white">31 tasks remaining</div>
-        </div>
-        
-      </div>  
+        <div className="stat bg-[#336e85] rounded-lg space-y-2 w-[48rem]">
+            <div className=" text-white">Rating : (Last 7 Days) : 4.5</div>
+            <div className="text-white">Rating : (Last 30 Days) : 4.3</div>
+            <div className="text-secondary text-white">Rating : (All Time) : 4.1</div>
+        </div>       
     </div>
   )
 }

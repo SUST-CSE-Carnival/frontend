@@ -7,30 +7,33 @@ import React, { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { FaHome } from "react-icons/fa";
 import { IoBookmarksOutline } from "react-icons/io5";
+import { MdBorderColor } from "react-icons/md";
+import { MdOutlineChatBubble } from "react-icons/md";
+import { FaUserAlt } from "react-icons/fa";
+import { MdOutlineRateReview } from "react-icons/md";
 
 
 export default function RootLayout({ params, children }) {
   const pathname = usePathname()
-  const [currentState, setCurrentState] = useState("upcoming")
   const [profile, setProfile] = useState(null)
   const [url, setUrl] = useState(null)
 
-//   useEffect(() => {
-//     async function getProfile() {
-//       let token = localStorage.getItem("token")
-//       token = JSON.parse(token)
-//       const endpoint = process.env.NEXT_PUBLIC_ENDPOINT
-//       const response = await fetch(`${endpoint}/profile`, {
-//         method: 'GET',
-//         headers : {'Content-Type': 'application/json',
-//         'Authorization': 'Bearer ' + token.accessToken
-//       }
-//     })
-//       const ans = await response.json()        
-//       setProfile(ans)   
-//     }
-//     getProfile()
-//   }, [])
+  useEffect(() => {
+    async function getProfile() {
+      let token = localStorage.getItem("token")
+      token = JSON.parse(token)
+      const endpoint = process.env.NEXT_PUBLIC_ENDPOINT
+      const response = await fetch(`${endpoint}/profile`, {
+        method: 'GET',
+        headers : {'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token.accessToken
+      }
+    })
+      const ans = await response.json()        
+      setProfile(ans)   
+    }
+    getProfile()
+  }, [])
 
   return (
     <main>
@@ -46,26 +49,26 @@ export default function RootLayout({ params, children }) {
                 <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
             </div>
          </div>
-          <h1 className='text-xl text-black my-4'>Hi, John!</h1>
+          <h1 className='text-xl text-black my-4'>Hi, </h1>
 
-          <div onClick={() => setCurrentState("/")} className={`p-16 my-1 text-xl ${pathname === `/dashboard/${params.id}` ? "text-black" : "text-gray-500 "} flex py-2 cursor-pointer justify-between w-full items-center`}>
-              <FaHome  className='text-2xl mr-4' />
-              <Link className='h-full w-full' href={`/dashboard/${params.id}/`}>Reports</Link>
+          <div className={`p-16 my-1 text-xl ${pathname === `/dashboard/${params.id}/orders` ? "text-black" : "text-gray-500 "} flex py-2 cursor-pointer justify-between w-full items-center`}>
+              <MdBorderColor  className='text-2xl mr-4' />
+              <Link className='h-full w-full' href={`/dashboard/${params.id}/orders`}>Your Orders</Link>
           </div>
 
-          <div onClick={() => setCurrentState("/")} className={`p-16 my-1 text-xl  ${pathname === `/dashboard/${params.id}/something` ? "text-black" : "text-gray-500 "} flex py-2 cursor-pointer justify-between w-full items-center`}>
-              <FaHome  className='text-2xl mr-4' />
-              <Link className='h-full w-full' href={`/dashboard/${params.id}/`}>Some other Topics</Link>
+          <div className={`p-16 my-1 text-xl  ${pathname === `/dashboard/${params.id}/inbox` ? "text-black" : "text-gray-500 "} flex py-2 cursor-pointer justify-between w-full items-center`}>
+              <MdOutlineChatBubble  className='text-2xl mr-4' />
+              <Link className='h-full w-full' href={`/dashboard/${params.id}/inbox`}>Inbox</Link>
           </div>
 
-          <div onClick={() => setCurrentState("/")} className={`p-16 my-1 text-xl  ${pathname === `/dashboard/${params.id}/something` ? "text-black" : "text-gray-500 "} flex py-2 cursor-pointer justify-between w-full items-center`}>
-              <IoBookmarksOutline  className='text-2xl mr-4' />
-              <Link className='h-full w-full' href={`/dashboard/${params.id}/`}>Courses</Link>
+          <div className={`p-16 my-1 text-xl  ${pathname === `/dashboard/${params.id}/inbox` ? "text-black" : "text-gray-500 "} flex py-2 cursor-pointer justify-between w-full items-center`}>
+              <MdOutlineRateReview  className='text-2xl mr-4' />
+              <Link className='h-full w-full' href={`/dashboard/${params.id}/review`}>Give Review</Link>
           </div>
 
-          <div onClick={() => setCurrentState("/")} className={`p-16 my-1 text-xl  ${pathname === `/dashboard/${params.id}/something` ? "text-black" : "text-gray-500 "} flex py-2 cursor-pointer justify-between w-full items-center`}>
-              <FaHome  className='text-2xl mr-4' />
-              <Link className='h-full w-full' href={`/dashboard/${params.id}/`}>Home</Link>
+          <div className={`p-16 my-1 text-xl  ${pathname === `/dashboard/${params.id}/something` ? "text-black" : "text-gray-500 "} flex py-2 cursor-pointer justify-between w-full items-center`}>
+              <FaUserAlt  className='text-2xl mr-4' />
+              <Link className='h-full w-full' href={`/dashboard/${params.id}/profile`}>Profile</Link>
           </div>
 
           <div className='mt-auto mb-32'>
