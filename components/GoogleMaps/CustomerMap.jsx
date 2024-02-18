@@ -20,8 +20,8 @@ export default function CustomerMap({ center, userLocation }) {
         const directionsService = new google.maps.DirectionsService()
         await directionsService.route(
             {
-                destination: new google.maps.LatLng(parseFloat(userLocation.latitude), parseFloat(userLocation.longitude)),
-                origin: new google.maps.LatLng(parseFloat(center.lat), parseFloat(center.lng)),
+                origin: new google.maps.LatLng(parseFloat(userLocation.latitude), parseFloat(userLocation.longitude)),
+                destination: new google.maps.LatLng(parseFloat(center.lat), parseFloat(center.lng)),
                 travelMode: 'WALKING',
                 },
                 (result, status) => {

@@ -9,10 +9,7 @@ export default function MedicineSIdeBar({ checkedCompanies, setCheckedCompanies 
     "Beximco Pharmaceuticals Ltd.",
     "Eskayef Pharmaceuticals Ltd.",
     "Aristopharma Limited",
-    "Beacon Pharmaceuticals PLC",
-    "Belsen Pharmaceuticals Ltd.",
-    "Drug International Ltd.",
-    "Active Fine Chemicals Ltd."
+    "Beacon Pharmaceuticals PLC"
   ];
 
   const handleCheckboxChange = (companyName) => {
