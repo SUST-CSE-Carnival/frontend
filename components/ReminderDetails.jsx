@@ -28,34 +28,6 @@ export default function ReminderDetails({ reminder }) {
     }
   };
 
-  function handleUpdate() {
-    let token = localStorage.getItem("token")
-    token = JSON.parse(token)
-    const data = {
-        id : reminder.id,
-        description,
-        time : reminderTime,
-        days : selectedDays.join(',')
-    }
-    console.log(data)
-    setDescription("")
-    setReminderTime("")
-    setSelectedDays([])
-
-    const endpoint = process.env.NEXT_PUBLIC_ENDPOINT
-    fetch(`${endpoint}/update/medicine/reminder`, {
-        method: 'POST',
-        headers : {'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token.accessToken },
-        body : JSON.stringify(data)
-    })
-        .then((res) => res.json())
-        .then((data) => {
-            setTimeout(() => {
-                window.location.reload();
-            }, 1000)
-        })
-  }
   function handleDelete() {
     let token = localStorage.getItem("token")
     token = JSON.parse(token)
