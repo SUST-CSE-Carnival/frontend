@@ -32,7 +32,6 @@ export default function MedicineOrderAcceptRow({ order, userLocation }) {
               console.log(order)
               addMemberToChat(token.email, "1234", res.id, order?.email)
               setTimeout(() => {
-                  console.log("Done")
                   deleteChat(token.email, "1234", res.id)
               }, 1000 * 60 * 60)
             })

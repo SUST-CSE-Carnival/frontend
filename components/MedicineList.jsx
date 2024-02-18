@@ -24,7 +24,6 @@ export default function MedicineList({ cartItems, setCartItems, medicineInput, c
       .then((data) => {
         setData(data.slice(page * 20, page * 20 + 20))
         setAllData(data)
-        console.log(data)
         setLoading(false)
       })
   }, [])
@@ -32,23 +31,9 @@ export default function MedicineList({ cartItems, setCartItems, medicineInput, c
   useEffect(() => {
     const range = page * 20
     setData(allData?.slice(range, range + 20))
-
-    if(checkedCompanies.length != 0) {
-      const filteredMedicines = allData?.filter((medicine) =>
-        checkedCompanies.includes(medicine.manufacturer_name)
-      );
-      setData(filteredMedicines);
-    }
-    if(checkedCompanies.length != 0) {
-      if(medicineInput != "") {
-        setData(prev => data?.filter(medicine => medicine.medicine_name.toLowerCase().includes(medicineInput.toLowerCase())))
-      }
-    }
-    else {
-      if(medicineInput != "") {
+    if(medicineInput != "") {
         setData(prev => allData?.filter(medicine => medicine.medicine_name.toLowerCase().includes(medicineInput.toLowerCase())))
       }
-    }
     if(checkedCompanies.length != 0 && medicineInput != "") {
       let filteredMedicines = data?.filter((medicine) =>
         checkedCompanies.includes(medicine.manufacturer_name)

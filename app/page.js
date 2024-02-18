@@ -5,10 +5,7 @@ const poppins = Poppins({ subsets: ['latin'], weight: '500' })
 import Lottie from 'lottie-react'
 import Link from 'next/link'
 import landing from '@/components/Lottiefiles/pharmacy.json'
-import MapComponent from '@/components/GoogleMaps/MapComponent'
 import SupportChat from '@/components/AIChatBot/SupportChat'
-import { useEffect, useState } from 'react'
-
 
 export default function Home() {
 

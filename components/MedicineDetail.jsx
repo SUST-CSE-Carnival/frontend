@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Button } from './ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog'
 import PageLoading from './PageLoading'
@@ -62,7 +62,6 @@ export default function MedicineDetail({ medicineDetail, cartItems, setCartItems
     function handleAddToCart() {
         if(!buttonClicked) {
             if(number > 0) {
-                const price = medicineDetail.price * number
                 setCartItems([...cartItems, {...medicineDetail, number}])
             }
         }
