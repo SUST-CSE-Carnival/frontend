@@ -12,11 +12,6 @@ import { useEffect, useState } from 'react'
 
 export default function Home() {
 
-  const [client, setClient] = useState(false)  
-
-  useEffect(() => {
-    setClient(true)
-  }, [])
 
   return (
     <main className={`w-full min-h-screen overflow-auto bg-[white]`}>
@@ -40,7 +35,7 @@ export default function Home() {
 
           </div>
         </section>
-        { client && <SupportChat /> }
+        <SupportChat /> 
     </main>
   )
 }

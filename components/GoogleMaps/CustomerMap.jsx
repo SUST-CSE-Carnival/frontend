@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
-import { GoogleMap, useLoadScript, Marker, DirectionsRenderer } from "@react-google-maps/api"
+import { GoogleMap, useLoadScript, DirectionsRenderer } from "@react-google-maps/api"
 
 export default function CustomerMap({ center, userLocation }) { 
 
@@ -20,8 +20,8 @@ export default function CustomerMap({ center, userLocation }) {
         const directionsService = new google.maps.DirectionsService()
         await directionsService.route(
             {
-                origin: new google.maps.LatLng(parseFloat(userLocation.latitude), parseFloat(userLocation.longitude)),
-                destination: new google.maps.LatLng(parseFloat(center.lat), parseFloat(center.lng)),
+                destination: new google.maps.LatLng(parseFloat(userLocation.latitude), parseFloat(userLocation.longitude)),
+                origin: new google.maps.LatLng(parseFloat(center.lat), parseFloat(center.lng)),
                 travelMode: 'WALKING',
                 },
                 (result, status) => {
@@ -50,8 +50,6 @@ export default function CustomerMap({ center, userLocation }) {
           }}
           onLoad={map => setMap(map)}
         >
-          <Marker position={center} />
-          <Marker position={{lat : userLocation?.latitude, lng : userLocation?.longitude }} />
           {directions && <DirectionsRenderer directions={directions} />}
         </GoogleMap>
     </div>
