@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import {
   MultiChatSocket,
   MultiChatWindow,
-  SingleChatSocket,
   useMultiChatLogic,
 } from 'react-chat-engine-advanced';
 

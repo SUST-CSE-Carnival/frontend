@@ -4,7 +4,7 @@ import { TableCell, TableRow } from './ui/table'
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from '@/components/ui/dialog'
 import CustomerMap from './GoogleMaps/CustomerMap'
 import { Button } from './ui/button'
-import { addMemberToChat, createNewChat } from './utils'
+import { addMemberToChat, createNewChat, deleteChat } from './utils'
 
 
 export default function MedicineOrderAcceptRow({ order, userLocation }) {
