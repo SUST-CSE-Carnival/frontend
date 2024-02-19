@@ -52,7 +52,7 @@ export default function PharmacyOrderTable() {
         order.place = JSON.parse(order.place)
         order.distance = calculateDistance(userLocation.latitude, userLocation.longitude, order.place.lat, order.place.lng)
       }
-      const ordersToShow = allData.filter(order => order.distance < 50)
+      const ordersToShow = allData.filter(order => order.distance < 500)
       setData(ordersToShow)
       console.log(ordersToShow)
     } 
